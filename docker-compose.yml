@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  leaderboard_service:
+    build: ./leaderboard_service
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+      - redis
+      - rabbitmq
+
+  trade_producer_service:
+    build: ./trade_producer_service
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: YOUR_POSTGRES_PASSWORD
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
