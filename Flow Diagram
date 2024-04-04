@@ -1,0 +1,18 @@
+tanx_leaderboard/
+│
+├── EC2_A/
+│   ├── docker-compose.yml      # Docker Compose file for EC2_A
+│   └── leaderboard_service/    # Leaderboard Service implementation
+│   └── trade_producer_service/ # Trade Producer Service implementation
+│
+├── EC2_B/
+│   ├── docker-compose.yml      # Docker Compose file for EC2_B
+│   └── postgres/                # PostgreSQL configuration
+│
+├── EC2_C/
+│   ├── docker-compose.yml      # Docker Compose file for EC2_C
+│   └── redis/                   # Redis configuration
+│
+└── reverse_proxy/
+    ├── docker-compose.yml      # Docker Compose file for reverse proxy
+    └── nginx/                   # NGINX configuration
